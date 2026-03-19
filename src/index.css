@@ -1,0 +1,44 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-family: "Fira Code", monospace;
+  background-color: #282C33;
+  color: #ffff;
+  position: relative;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.levender-color {
+  color: #C778DD;
+}
+
+.gray-color {
+  color: #ABB2BF;
+  transition: color 0.5s;
+}
+
+.gray-color:hover {
+  color: #ffff;
+}
+
+.btn-varient-1 {
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 0.5px solid #C778DD;
+  color: white;
+  transition: color,border 0.5s  ;
+}
+
+.btn-varient-1:hover {
+   border: 0.5px solid #000000;
+  color: #282C33;
+  background-color: rgb(255, 255, 255);
+}
