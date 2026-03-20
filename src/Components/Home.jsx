@@ -25,6 +25,14 @@ export default function home() {
     const skill_card_ref = useRef();
     const projects = useContext(ProjectContext)
     useGSAP(() => {
+        const elements = gsap.utils.toArray(content1Rf.current.children)
+        const elements2 = gsap.utils.toArray(contentMainRf.current.children)
+        const skill_card = gsap.utils.toArray(skill_card_ref.current.children)
+        const tittles = document.querySelectorAll('.tittle-div h2')
+        const tittle_line = document.querySelectorAll('.tittle-line')
+        const tittle_viewall = document.querySelectorAll('.viewall')
+        const project_cards = document.querySelectorAll('#project-cards')
+
         // ------------------------TEXT SPLITER VFX-------------------------------
         const tex = document.querySelector(".con2-p").textContent;
         const split_text = tex.split("");
@@ -41,8 +49,7 @@ export default function home() {
         document.querySelector(".con2-p").innerHTML = final_text;
 
         // --------------------------LOADING PAGE VFX------------------------
-        const elements = gsap.utils.toArray(content1Rf.current.children)
-        const elements2 = gsap.utils.toArray(contentMainRf.current.children)
+
         const tl = gsap.timeline();
         tl.from('.said-cotainer', {
             y: -100,
@@ -86,9 +93,7 @@ export default function home() {
         // -------------------------------SCROLL TRIGGER EFX----------------------------
 
         // -------------------------ALL TITTLES-----------------
-        const tittles = document.querySelectorAll('.tittle-div h2')
-        const tittle_line = document.querySelectorAll('.tittle-line')
-        const tittle_viewall = document.querySelectorAll('.viewall')
+
         tittles.forEach((val) => {
             gsap.from(val, {
                 x: -100,
@@ -130,7 +135,6 @@ export default function home() {
         })
 
         // --------------------PROJECT CARD VFX------------------
-        const project_cards = document.querySelectorAll('#project-cards')
         project_cards.forEach((val) => {
             gsap.from(val, {
                 x: 200,
@@ -145,7 +149,6 @@ export default function home() {
         })
 
         // --------------------------SIKILL VFX ----------------------
-        const skill_card = gsap.utils.toArray(skill_card_ref.current.children)
         gsap.from('.skil-body-1 img', {
             x: -100,
             y: 100,
