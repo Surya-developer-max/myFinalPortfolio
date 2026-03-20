@@ -40,10 +40,10 @@ export default function home() {
         })
         document.querySelector(".con2-p").innerHTML = final_text;
 
-        // --------------------------PAGE LOADING VFX------------------------
+        // --------------------------LOADING PAGE VFX------------------------
         const elements = gsap.utils.toArray(content1Rf.current.children)
         const elements2 = gsap.utils.toArray(contentMainRf.current.children)
-        const tl = gsap.timeline({ delay: 1 });
+        const tl = gsap.timeline();
         tl.from('.said-cotainer', {
             y: -100,
             opacity: 0,
@@ -397,12 +397,12 @@ export default function home() {
                         </Container>
                     </div>
 
-                    {/* ----------------------------------------------------------------------ABOUT---------------------------------------------- */}
+                    {/* ----------------------------------------------------------------------ABOUT ME---------------------------------------------- */}
                     <div className='about-content-5 content-basic'>
                         <div className='tittle-div '>
                             <h2><span className='levender-color'>#</span>AboutMe</h2>
                             <div className='tittle-line'></div>
-                            <div className='viewall'><p>View all</p></div>
+                            <div className='viewall'><p><Link to="/about" className='text-decoration-none text-light gray-color'>View all</Link></p></div>
                         </div>
                         <Row>
                             <Col md={6}>
@@ -423,6 +423,7 @@ export default function home() {
                             </Col>
                         </Row>
                     </div>
+                    {/* -----------------------------------CONTACT----------------------------------- */}
                     <div className='contact-content-6 content-basic'>
                         <div className='tittle-div '>
                             <h2><span className='levender-color'>#</span>Contact</h2>

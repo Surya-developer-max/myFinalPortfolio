@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import Home from "./Home";
 import Project from "./project";
+import About from "./aboutme";
 export default function navbar() {
 
-    const [menu, setMenu] = useState(false)
     const tl2 = gsap.timeline();
     useGSAP(() => {
         const tl = gsap.timeline();
@@ -49,7 +49,7 @@ export default function navbar() {
                         <i className="ri-close-fill"></i>
                     </div>
                     <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light" to='/'><span className='levender-color'>#</span>Home</Link></h3>
-                    <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light"><span className='levender-color'>#</span>About-me</Link></h3>
+                    <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light" to="/about"><span className='levender-color'>#</span>About-me</Link></h3>
                     <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light" to="/project"><span className='levender-color'>#</span>Projects</Link></h3>
                     <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light"><span className='levender-color'>#</span>Contacts</Link></h3>
                 </div>
@@ -61,6 +61,7 @@ export default function navbar() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/project" element={<Project />} />
+                <Route path="/about" element={<About />} />
             </Routes>
         </>
     )

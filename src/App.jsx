@@ -6,6 +6,7 @@ import ProjectImg2 from './assets/img2.png'
 import ProjectImg3 from './assets/img3.png'
 import ProjectImg4 from './assets/img4.png'
 import { createContext } from "react";
+import About from './Components/aboutme'
 export const ProjectContext = createContext();
 function App() {
   const projectData  = [
@@ -38,12 +39,12 @@ function App() {
       page_link: "https://suryaportfoliodemo.netlify.app/"
     }
   ]
-  console.log(projectData[1].link)
   return (
     <>
       <ProjectContext.Provider value={projectData}>
         <Navbar />
         {/* <Project /> */}
+        {/* <About/> */}
       </ProjectContext.Provider>
     </>
   )

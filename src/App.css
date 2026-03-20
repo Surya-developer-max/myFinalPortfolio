@@ -378,8 +378,21 @@ button {
 
 
 /* ------------------ MAIN PROJECT----------------------- */
-.main-project-container{
+.main-project-container,.about-container{
     margin: 50px 0px 0px 50px;
+}
+
+/* ----------------MAIN ABOUT DIV------------------- */
+.fun-facts{
+    display: flex;
+    flex-wrap: wrap;
+}
+.fun-facts p{
+    font-size: 13px;
+    padding: 5px 10px;
+    border: 0.5px solid gray;
+    margin: 0px;
+    margin: 5px;
 }
 @media screen and (max-width:500px) {
 
@@ -462,7 +475,7 @@ button {
     }
     /* ------------------------------------------------- */
     /* -----------------------------MAIN PROJECT CONTAINER--------------------------- */
-    .main-project-container{
+.main-project-container,.about-container{
     margin: 50px 0px 0px 0px;
 }
 }
