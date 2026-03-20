@@ -1,5 +1,6 @@
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 export default function projectProvider(props) {
-    console.log(props.key)
     return (
         <>
             <div className='project-card' key={props.tittle}>
@@ -14,7 +15,7 @@ export default function projectProvider(props) {
                         <h3 className="fs-5">{props.tittle}</h3>
                         <p style={{fontSize:'12px'}} className="gray-color">{props.summary}</p>
                         <div>
-                            <button className='btn-varient-1'>Live</button>
+                            <button className='btn-varient-1'><a className="text-decoration-none  text-light" href={props.link}>Live</a></button>
                         </div>
                     </div>
                 </div>

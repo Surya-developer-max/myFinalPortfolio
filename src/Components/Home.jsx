@@ -1,55 +1,31 @@
+import ProjectProvider from './projectProvider'
+import { ProjectContext } from "../App";
+import { useContext } from "react";
+import { useRef } from 'react';
+
 import OutlineImg from '../assets/StyleOutline.png'
 import Dots from '../assets/Dots.png'
 import Person from '../assets/Image.png'
 import Quets from '../assets/quets.png'
 import Rectangle from '../assets/ract.png'
-import ProjectImg1 from '../assets/img1.png'
-import ProjectImg2 from '../assets/img2.png'
-import ProjectImg3 from '../assets/img3.png'
-import ProjectImg4 from '../assets/img4.png'
-import { useEffect, useRef } from 'react'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger)
+import Person2 from '../assets/person2.png'
+import rect2 from '../assets/rect-2.png'
+
 import { Container, Row, Col } from 'react-bootstrap'
 import { useGSAP } from '@gsap/react'
-import rect2 from '../assets/rect-2.png'
-import Person2 from '../assets/person2.png'
 import gsap from 'gsap'
-import ProjectProvider from './projectProvider'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
+
+import { Link } from 'react-router-dom'
+
 export default function home() {
-    const Project = [
-        {
-            img: ProjectImg1,
-            tools: "HTML CSS Bootstrap5 Js React ",
-            tittle: "Portfolio",
-            summary: "A Little Try",
-            link: "pgLink"
-        },
-        {
-            img: ProjectImg2,
-            tools: "HTML CSS Bootstrap5 Js React ",
-            tittle: "Junior Kuppanna",
-            summary: "Built a scalable restaurant web application using React.js and Bootstrap.",
-            link: "pgLink"
-        },
-        {
-            img: ProjectImg3,
-            tools: "HTML CSS Bootstrap5 Js React ",
-            tittle: "The Kitchn",
-            summary: " Optimized page load performance by approximately 25% through efficient front-end design.",
-            link: "pgLink"
-        },
-        {
-            img: ProjectImg4,
-            tools: "HTML CSS Bootstrap5 Js React ",
-            tittle: "My PortFolio",
-            summary: "I Build a Scalable Portfolio for me. then, that's all",
-            link: "pgLink"
-        }
-    ]
     const content1Rf = useRef();
     const contentMainRf = useRef();
+    const skill_card_ref = useRef();
+    const projects = useContext(ProjectContext)
     useGSAP(() => {
+        // ------------------------TEXT SPLITER VFX-------------------------------
         const tex = document.querySelector(".con2-p").textContent;
         const split_text = tex.split("");
         var final_text = ""
@@ -64,12 +40,10 @@ export default function home() {
         })
         document.querySelector(".con2-p").innerHTML = final_text;
 
+        // --------------------------PAGE LOADING VFX------------------------
         const elements = gsap.utils.toArray(content1Rf.current.children)
         const elements2 = gsap.utils.toArray(contentMainRf.current.children)
-        
-        const tl = gsap.timeline({
-            duration: 1,
-        });
+        const tl = gsap.timeline({ delay: 1 });
         tl.from('.said-cotainer', {
             y: -100,
             opacity: 0,
@@ -78,6 +52,8 @@ export default function home() {
             tl.from(val, {
                 y: 50,
                 opacity: 0,
+                duration: 0.3,
+                ease: 'power1.in'
             })
         })
         elements.forEach(val => {
@@ -88,6 +64,7 @@ export default function home() {
                 rotate: 10,
             })
         })
+        // --------------CON-PART-2-----------------
         tl.from('.part2-bottom-div p', {
             opacity: 0,
         })
@@ -105,27 +82,186 @@ export default function home() {
             x: 50,
             opacity: 0,
         })
+
         // -------------------------------SCROLL TRIGGER EFX----------------------------
+
+        // -------------------------ALL TITTLES-----------------
         const tittles = document.querySelectorAll('.tittle-div h2')
-        console.log(tittles);
+        const tittle_line = document.querySelectorAll('.tittle-line')
+        const tittle_viewall = document.querySelectorAll('.viewall')
         tittles.forEach((val) => {
             gsap.from(val, {
                 x: -100,
                 opacity: 0,
                 scrollTrigger: {
                     trigger: val,
-                    start: "top 90%", 
+                    start: "top 90%",
                     end: "top 30%",
                     scroller: "body",
                     scrub: true,
-                    markers: true,
                 },
                 stagger: 0.15,
             })
         })
+        tittle_line.forEach((val) => {
+            gsap.from(val, {
+                x: 100,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: val,
+                    start: "top 90%",
+                    end: "top 30%",
+                    scroller: "body",
+                    scrub: true,
+                }
+            })
+        })
+        tittle_viewall.forEach((val) => {
+            gsap.from(val, {
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: val,
+                    start: "top 90%",
+                    end: "top 30%",
+                    scroller: "body",
+                    scrub: true,
+                }
+            })
+        })
 
+        // --------------------PROJECT CARD VFX------------------
+        const project_cards = document.querySelectorAll('#project-cards')
+        project_cards.forEach((val) => {
+            gsap.from(val, {
+                x: 200,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: val,
+                    start: 'top 90%',
+                    end: 'top 10%',
+                    scrub: true,
+                }
+            })
+        })
+
+        // --------------------------SIKILL VFX ----------------------
+        const skill_card = gsap.utils.toArray(skill_card_ref.current.children)
+        gsap.from('.skil-body-1 img', {
+            x: -100,
+            y: 100,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.skil-body-1 img',
+                start: 'top 90%',
+                end: 'top 20%',
+                scrub: true,
+            },
+            rotate: 90,
+
+            stagger: {
+                from: 'random',
+                amount: 1,
+            }
+        })
+        skill_card.forEach((val) => {
+            gsap.from(val, {
+                x: 100,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: val,
+                    start: 'top 90%',
+                    end: 'top 20%',
+                    scrub: true,
+                },
+                rotate: 20,
+            })
+        })
+        gsap.from('.skill-card-body p', {
+            y: 10,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.skill-card-body p',
+                start: 'top 90%',
+                end: 'top 20%',
+                scrub: true,
+            }
+        })
+
+        // -----------------------------------ABOUT VFX------------------------------
+        gsap.from('.about-body-1 p', {
+            y: 50,
+            opacity: 0,
+            stagger: 0.12,
+            scrollTrigger: {
+                trigger: '.about-body-1 p',
+                start: 'top 90%',
+                end: 'top 20%',
+                scrub: true,
+            }
+        })
+        gsap.from('.about-img-container img', {
+            x: 100,
+            opacity: 0,
+            stagger: 0.20,
+            scrollTrigger: {
+                trigger: '.about-img-container img',
+                start: 'top 90%',
+                end: 'top 20%',
+                scrub: true,
+            }
+        })
+
+        // -----------------------------------CONTACT VFX------------------------
+        gsap.from('.contact-us', {
+            x: -50,
+            opacity: 0,
+            stagger: 0.20,
+            scrollTrigger: {
+                trigger: '.contact-us',
+                start: 'top 80%',
+                end: 'top 50%',
+                scrub: true,
+            }
+        })
+        gsap.from('.contact-me', {
+            x: 50,
+
+            opacity: 0,
+            stagger: 0.20,
+            scrollTrigger: {
+                trigger: '.contact-me',
+                start: 'top 80%',
+                end: 'top 50%',
+                scrub: true,
+            },
+        })
+        // -----------------------FOOTER VFX-------------------------------------
+        gsap.from('.footer-body-2', {
+            opacity: 0,
+
+            x: 80,
+            scrollTrigger: {
+                trigger: '.footer-body-2',
+                start: 'top 90%',
+                end: 'top 70%',
+                scrub: true,
+            },
+            rotate: 30,
+        })
+        gsap.from('.footer-body-1', {
+            opacity: 0,
+            x: -80,
+            scrollTrigger: {
+                trigger: '.footer-body-1',
+                start: 'top 90%',
+                end: 'top 70%',
+                scrub: true,
+            },
+            rotate: -30,
+        })
 
     }, [])
+
     return (
         <>
             <Container fluid>
@@ -135,7 +271,9 @@ export default function home() {
                     <i className="ri-linkedin-box-fill"></i>
                     <i className="ri-whatsapp-fill"></i>
                 </div>
+
                 <div className="main-container">
+                    {/* -----------------------------------------------------------INTRO------------------------------------------------ */}
                     <div className="content-1">
                         <div className="part-1">
                             <div className='main-text-container' ref={contentMainRf}>
@@ -153,7 +291,7 @@ export default function home() {
                             </div>
                         </div>
                     </div>
-                    <div className='content-2'>
+                    <div className='content-2 '>
                         <div className='c2-part-1'>
                             <p className='con2-p'>With great power comes great electricity bill</p>
                             <div className='c2-part-2'><p className='m-0'>- Surya</p></div>
@@ -162,20 +300,24 @@ export default function home() {
                         </div>
                         <img src={Rectangle} alt="" className='rect-img' />
                     </div>
-                    <div className='project-content-3'>
+
+                    {/* ----------------------------------------------------------PROJECT----------------------------------------- */}
+                    <div className='project-content-3 content-basic'>
                         <img src={Dots} alt="" className='project-dots' />
                         <img src={Rectangle} alt="" className='project-rect' />
 
                         <div className='tittle-div'>
                             <h2><span className='levender-color'>#</span>projects</h2>
-                            <div></div>
-                            <div className='viewall'><p>View all</p></div>
+                            <div className='tittle-line'></div>
+                            <div className='viewall'><p><Link to="/project" className='text-decoration-none gray-color'>View all</Link></p></div>
                         </div>
                         <div className='project-body'>
-                            {Project.map((val) => {
+                            {projects.map((val) => {
                                 return (
                                     <>
-                                        <ProjectProvider img={val.img} tittle={val.tittle} tools={val.tools} summary={val.summary} key={val.index} />
+                                        <div id="project-cards">
+                                            <ProjectProvider img={val.img} tittle={val.tittle} link={val.page_link} tools={val.tools} summary={val.summary} key={val.index} />
+                                        </div>
                                     </>
                                 )
 
@@ -183,13 +325,13 @@ export default function home() {
                         </div>
                     </div>
 
-                    <div className='skil-content-4'>
+                    {/* ---------------------------------------------------------SKILL----------------------------------------- */}
+                    <div className='skil-content-4 content-basic '>
                         <div className='tittle-div'>
                             <h2><span className='levender-color'>#</span>Skils</h2>
-                            <div></div>
+                            <div className='tittle-line'></div>
                             <div className='viewall'><p>View all</p></div>
                         </div>
-
                         <Container>
                             <Row>
                                 <Col xs={12} md={5}>
@@ -202,8 +344,8 @@ export default function home() {
                                     </div>
                                 </Col>
                                 <Col xs={12} md={7}>
-                                    <div className='skill-card-main-container'>
-                                        <div className='skill-card p-0'>
+                                    <div className='skill-card-main-container' ref={skill_card_ref}>
+                                        <div className='skill-card p-0' >
                                             <div className='skill-card-tittle'>
                                                 <p className='m-0'>Languages</p>
                                             </div>
@@ -255,10 +397,11 @@ export default function home() {
                         </Container>
                     </div>
 
-                    <div className='about-content-5 skil-content-4'>
-                        <div className='tittle-div about-tittle'>
+                    {/* ----------------------------------------------------------------------ABOUT---------------------------------------------- */}
+                    <div className='about-content-5 content-basic'>
+                        <div className='tittle-div '>
                             <h2><span className='levender-color'>#</span>AboutMe</h2>
-                            <div></div>
+                            <div className='tittle-line'></div>
                             <div className='viewall'><p>View all</p></div>
                         </div>
                         <Row>
@@ -274,15 +417,58 @@ export default function home() {
                                     <div className='about-img-container'>
                                         <img src={Dots} alt="" className='about-dots' />
                                         <img src={Dots} alt="" className='about-dots-2' />
-
                                         <img src={Person2} alt="" className='about-img' />
                                     </div>
                                 </div>
                             </Col>
                         </Row>
                     </div>
+                    <div className='contact-content-6 content-basic'>
+                        <div className='tittle-div '>
+                            <h2><span className='levender-color'>#</span>Contact</h2>
+                            <div className='tittle-line'></div>
+                            <div className='viewall'><p>View all</p></div>
+                        </div>
+                        <Row>
+                            <Col md={5}>
+                                <p className='mt-5 gray-color contact-us'>I’m interested in freelance opportunities. However, if you have other request or question, don’t hesitate to contact me</p>
+                            </Col>
+                            <Col md={7} className='d-flex justify-content-center align-items-center'>
+                                <div className='contact-me'>
+                                    <h3 className='fs-6 m-0 p-3'>Message Me Here</h3>
+                                    <p className=' m-0 my-1 mx-2 gray-color'><i className="ri-whatsapp-fill"></i> Whstsapp</p>
+                                    <p className=' m-0 my-1 mx-2 gray-color'><i className="ri-mail-fill"></i> Email</p>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
                 </div>
             </Container>
+
+            {/* ---------------------------------------------FOOTER----------------------------------- */}
+            <div className='footer my-5         overflow-hidden'>
+                <div className='d-flex justify-content-around my-4 border-top flex-wrap'>
+                    <div className='mt-4 footer-body-1'>
+                        <p>Surya <span className='gray-color' style={{ fontSize: '10px' }}>suryasanthoshh@gmail.com</span></p>
+                        <p className='gray-color' style={{ fontSize: '12px' }}>Web designer and front-end developer</p>
+                    </div>
+                    <div className='mt-4 footer-body-2' >
+                        <div>
+                            <p className='m-0 fs-5'>Media</p>
+                            <div>
+                                <i className=" mx-1 ri-github-fill"></i>
+                                <i className=" mx-1 ri-linkedin-box-fill"></i>
+                                <i className=" mx-1 ri-whatsapp-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div >
+                    <center>
+                        <p className='gray-color mt-5 pt-5' style={{ fontSize: '10px' }}>© Copyright 2022. Made by Elias</p>
+                    </center>
+                </div>
+            </div>
         </>
     )
 }

@@ -2,12 +2,10 @@
 
 .navbar {
     margin: 0px 50px;
+    position: sticky;
+    top: 0px;
     display: flex;
     align-items: center;
-    position: relative;
-    justify-content: space-between;
-    position: sticky;
-    /* top: 0px; */
     z-index: 12;
     background-color: #282C33;
 }
@@ -17,7 +15,6 @@
     display: flex;
     align-items: center;
     right: 0px;
-    transform: translateY(0%);
 }
 
 .nav-items h3 {
@@ -40,15 +37,46 @@
 
 }
 
+/* ------------------ */
+
+.main-container {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.tittle-div {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.viewall p {
+    position: absolute;
+    right: 10px;
+    /* transform: translateY(-50%); */
+}
+
+.tittle-div .tittle-line {
+    width: 300px;
+    height: 1px;
+    background-color: #C778DD;
+}
+
 /* -----------------------HOME-------------------------- */
+.content-basic {
+    margin-top: 150px;
+    margin-left: 100px;
+    position: relative;
+}
+
 .said-cotainer {
     position: absolute;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     rotate: 90deg;
     width: 200px;
-    top: 10%;
+    top: 30px;
     left: -4%;
 }
 
@@ -64,18 +92,8 @@
     margin: 5px;
 }
 
-.main-container {
-    width: 100%;
-    overflow-x: hidden;
-
-}
-/* 
-.main-container::-webkit-scrollbar {
-    display: none;
-} */
-
 .content-1 {
-    margin-top: 150px;
+    margin-top: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,8 +116,12 @@ button {
     position: relative;
 }
 
-.part-2 .outline {
+.part-2 img,
+.part2-bottom-div {
     position: absolute;
+}
+
+.part-2 .outline {
     left: 50px;
     top: 50px;
     width: 80px;
@@ -107,7 +129,6 @@ button {
 }
 
 .part-2 .dots {
-    position: absolute;
     bottom: 50px;
     right: 10px;
     width: 50px;
@@ -115,14 +136,12 @@ button {
 }
 
 .part-2 .person {
-    position: absolute;
     z-index: 3;
     bottom: 20px;
     width: 100%;
 }
 
 .part-2 .part2-bottom-div {
-    position: absolute;
     width: 100%;
     height: 20px;
     border: 0.5px solid rgb(177, 177, 177);
@@ -135,7 +154,6 @@ button {
 
 .content-2 {
     margin: 90px 0px 0px 0px;
-    width: 100%;
     height: 150px;
     display: flex;
     justify-content: center;
@@ -144,7 +162,7 @@ button {
 }
 
 .c2-part-1 {
-    width: 50vw;
+    width: 60vw;
     border: 1px solid rgb(189, 184, 184);
     position: relative;
     display: flex;
@@ -190,12 +208,6 @@ button {
 }
 
 /* ------------------------PROJECT---------------------- */
-.project-content-3 {
-    margin-top: 100px;
-    margin-left: 100px;
-    position: relative;
-}
-
 .project-dots {
     position: absolute;
     left: -150px;
@@ -208,29 +220,9 @@ button {
     top: 60%;
 }
 
-.tittle-div {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.viewall p {
-    position: absolute;
-    right: 10px;
-    transform: translateY(-50%);
-}
-
-.tittle-div div {
-    width: 200px;
-    height: 1px;
-    background-color: #C778DD;
-}
-
 .project-body {
     margin-top: 50px;
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
     gap: 10px;
     flex-wrap: wrap;
 }
@@ -273,16 +265,9 @@ button {
 }
 
 /* -----------------SKILS----------------- */
-.skil-content-4 {
-    margin-top: 150px;
-    margin-left: 100px;
-    position: relative;
-}
-
 .skil-body-1 {
-    height: 100%;
-    width: 100%;
     position: relative;
+    height: 400px;
 }
 
 .skil-body-1 img {
@@ -374,18 +359,37 @@ button {
 .about-dots {
     position: absolute;
     top: 10%;
-    left: 20%;
+    left: 5%;
 }
 
 .about-dots-2 {
     position: absolute;
-    top: 70%;
-    right: 10%;
+    top: 80%;
+    right: 5%;
 }
 
+/* -------------------CONTACT----------------- */
+.contact-me {
+    max-width: 300px;
+    border: 0.5px solid gray;
+    height: max-content;
+}
+
+
+
+/* ------------------ MAIN PROJECT----------------------- */
+.main-project-container{
+    margin: 50px 0px 0px 50px;
+}
 @media screen and (max-width:500px) {
+
+    /* -------------------------------- */
+    .content-basic {
+        margin: 100px 0px 0px 0px;
+    }
+
+    /* -------------------NAVBAR------------------------- */
     .navbar {
-        display: flex;
         margin: 0px;
     }
 
@@ -433,9 +437,6 @@ button {
     }
 
     /* --------------------Project----------------- */
-    .project-content-3 {
-        margin: 100px 0px 0px 0px;
-    }
 
     .tittle-div div {
         width: 50px;
@@ -450,24 +451,18 @@ button {
     }
 
     /* ------------------SKILL--------------- */
-    .skil-content-4 {
-        margin: 100px 0px 0px 0px;
-    }
-
     .skill-card-main-container {
         justify-content: center;
     }
 
-    /* ABOUT */
+    /* ----------------------ABOUT------------ */
     .about-img-container {
         width: 100vw;
         justify-content: center;
     }
+    /* ------------------------------------------------- */
+    /* -----------------------------MAIN PROJECT CONTAINER--------------------------- */
+    .main-project-container{
+    margin: 50px 0px 0px 0px;
 }
-
-@media screen and (max-width:770px) {
-    .skil-body-1 {
-        height: 400px;
-    }
-
 }
