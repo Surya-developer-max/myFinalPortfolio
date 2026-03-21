@@ -225,7 +225,6 @@ export default function home() {
         })
         gsap.from('.contact-me', {
             x: 50,
-
             opacity: 0,
             stagger: 0.20,
             scrollTrigger: {

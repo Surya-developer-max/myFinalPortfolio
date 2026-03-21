@@ -426,7 +426,8 @@ button {
     }
 
     .nav-items h3 {
-        margin: 20px 10px;
+        font-size: 40px;
+        margin: 50px 10px;
     }
 
     .close-icon {
