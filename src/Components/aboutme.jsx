@@ -6,15 +6,112 @@ import Rectangle from '../assets/ract.png'
 import Person2 from '../assets/person2.png'
 import rect2 from '../assets/rect-2.png'
 import { Container, Row, Col } from 'react-bootstrap'
-
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { useRef, useState } from 'react'
 export default function about() {
+    const mainRf = useRef()
+    const aboutBody1 = useRef()
+    const skillRf = useRef()
+    const tl = gsap.timeline();
+    const [count,setCount]=useState()
+    useGSAP(() => {
+        const body1Elements = gsap.utils.toArray(aboutBody1.current.children)
+        tl.from('.t2-div h2', {
+            x: -100,
+            opacity: 0,
+        })
+        tl.from('.t2-div p', {
+            x: 100,
+            opacity: 0,
+        })
+        body1Elements.forEach((val) => {
+            tl.from(val, {
+                y: 100,
+                opacity: 0,
+                duration: 0.2,
+                ease: 'power.in'
+            })
+        })
+        tl.from('.about-img-container img', {
+            x: 100,
+            opacity: 0,
+            stagger: {
+                from: 'random',
+                amount: 0.20,
+            }
+        })
+        const tittles = mainRf.current.querySelectorAll(".scroll-tittle h2")
+        tittles.forEach((val) => {
+            gsap.from(val, {
+                x: -100,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: val,
+                    start: 'top 90%',
+                    end: 'top 45%',
+                    scrub: true,
+
+                }
+            })
+        })
+        const skillElements = gsap.utils.toArray(skillRf.current.children)
+        skillElements.forEach((val) => {
+            gsap.from(val, {
+                x: 150,
+                opacity: 0,
+                rotate: 25,
+                scrollTrigger: {
+                    trigger: val,
+                    start: 'top 80%',
+                    end: 'top 45%',
+                    scrub: true,
+
+                }
+            })
+        })
+
+        // fun-facts
+        gsap.from('.fun-facts p', {
+            y: 150,
+            opacity: 0,
+            rotate: 25,
+            stagger: {
+                from: "random",
+                amount: 0.20,
+            },
+            scrollTrigger: {
+                trigger: '.fun-facts p',
+                start: 'top 90%',
+                end: 'top 45%',
+                scrub: true,
+
+            }
+        })
+        gsap.from('.skil-body-1 img', {
+            x: 150,
+            opacity: 0,
+            rotate: 25,
+            stagger: {
+                from: 'random',
+                amount: 0.20,
+            },
+            scrollTrigger: {
+                trigger: ".skil-body-1 img",
+                start: 'top 90%',
+                end: 'top 45%',
+                scrub: true,
+            }
+        })
+
+    }, [count])
     return (
         <>
             <Container fluid>
-                <div className="about-container overflow-hidden">
+                <div className="about-container overflow-hidden" ref={mainRf}>
                     <div>
-                        <div className='tittle-div d-block '>
-                            <h2><span className='levender-color'>/</span>About me</h2>
+                        <div className=' t2-div '>
+                            <h2><span className='levender-color '>/</span>About me</h2>
                             <p style={{ fontSize: '12px' }} className="gray-color">Who am i</p>
                         </div>
                     </div>
@@ -22,9 +119,11 @@ export default function about() {
                         <Row>
                             <Col md={6}>
                                 <div className='about-body-1'>
-                                    <p className='gray-color'>Hello, i’m Surya!</p>
-                                    <p className='gray-color'>I’m a self-taught front-end developer based in Tamilnadu, India. I can develop responsive websites from scratch and raise them into modern user-friendly web experiences. </p>
-                                    <p className='gray-color'>Transforming my creativity and knowledge into a websites has been my passion for over a year. I have been helping various clients to establish their presence online. I always strive to learn about the newest technologies and frameworks.</p>
+                                    <div className='d-flex flex-column  justify-content-center' ref={aboutBody1}>
+                                        <p className='gray-color'>Hello, i’m Surya!</p>
+                                        <p className='gray-color'>I’m a self-taught front-end developer based in Tamilnadu, India. I can develop responsive websites from scratch and raise them into modern user-friendly web experiences. </p>
+                                        <p className='gray-color'>Transforming my creativity and knowledge into a websites has been my passion for over a year. I have been helping various clients to establish their presence online. I always strive to learn about the newest technologies and frameworks.</p>
+                                    </div>
                                 </div>
                             </Col>
                             <Col md={6}>
@@ -38,10 +137,10 @@ export default function about() {
                             </Col>
                         </Row>
                     </div>
-                    <div className='tittle-div d-block '>
+                    <div className='scroll-tittle'>
                         <h2><span className='levender-color'>#</span>Skills</h2>
                     </div>
-                    <div className='skill-card-main-container mt-5 w-100' >
+                    <div className='skill-card-main-container mt-5 w-100' ref={skillRf} >
                         <div className='skill-card p-0' >
                             <div className='skill-card-tittle'>
                                 <p className='m-0'>Languages</p>
@@ -87,7 +186,7 @@ export default function about() {
                         </div>
                     </div>
                     <div className='mt-5 pt-5'>
-                        <div className='tittle-div d-block mt-5 '>
+                        <div className=' mt-5 scroll-tittle'>
                             <h2><span className='levender-color'>#</span>My-Fun-Facts</h2>
                         </div>
                         <Row>
@@ -103,12 +202,14 @@ export default function about() {
                                 </div>
                             </Col>
                             <Col md={7} >
-                                <div className='skil-body-1  w-75' style={{ height: '300px' }}>
-                                    <img src={Dots} alt="" className='skill-dots' />
-                                    <img src={Dots} alt="" className='skill-dots-2' />
-                                    <img src={rect2} alt="" className='skill-rect-2' />
-                                    <img src={rect2} alt="" className='skill-rect-1' />
-                                    <img src={OutlineImg} alt="" className='skill-outline' />
+                                <div className='w-100 d-flex justify-content-center justify-content-md-end'>
+                                    <div className='skil-body-1  w-75' style={{ height: '300px' }}>
+                                        <img src={Dots} alt="" className='skill-dots' />
+                                        <img src={Dots} alt="" className='skill-dots-2' />
+                                        <img src={rect2} alt="" className='skill-rect-2' />
+                                        <img src={rect2} alt="" className='skill-rect-1' />
+                                        <img src={OutlineImg} alt="" className='skill-outline' />
+                                    </div>
                                 </div>
                             </Col>
                         </Row>

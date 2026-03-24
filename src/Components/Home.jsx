@@ -1,6 +1,6 @@
 import ProjectProvider from './projectProvider'
 import { ProjectContext } from "../App";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useRef } from 'react';
 
 import OutlineImg from '../assets/StyleOutline.png'
@@ -23,7 +23,9 @@ export default function home() {
     const content1Rf = useRef();
     const contentMainRf = useRef();
     const skill_card_ref = useRef();
+    const mainRf=useRef();
     const projects = useContext(ProjectContext)
+    const [use,setUse]=useState()
     useGSAP(() => {
         // ------------------------TEXT SPLITER VFX-------------------------------
         const tex = document.querySelector(".con2-p").textContent;
@@ -31,14 +33,14 @@ export default function home() {
         var final_text = ""
         split_text.forEach(v => {
             if (v == " ") {
-                final_text += `<span>_</span>`
+                final_text += `<span>&nbsp;</span>`
             }
             else {
                 final_text += `<span>${v}</span>`
             }
 
         })
-        document.querySelector(".con2-p").innerHTML = final_text;
+         document.querySelector(".con2-p").innerHTML = final_text;
 
         // --------------------------LOADING PAGE VFX------------------------
         const elements = gsap.utils.toArray(content1Rf.current.children)
@@ -86,9 +88,9 @@ export default function home() {
         // -------------------------------SCROLL TRIGGER EFX----------------------------
 
         // -------------------------ALL TITTLES-----------------
-        const tittles = document.querySelectorAll('.tittle-div h2')
-        const tittle_line = document.querySelectorAll('.tittle-line')
-        const tittle_viewall = document.querySelectorAll('.viewall')
+        const tittles = mainRf.current.querySelectorAll('.tittle-div h2')
+        const tittle_line = mainRf.current.querySelectorAll('.tittle-line')
+        const tittle_viewall = mainRf.current.querySelectorAll('.viewall')
         tittles.forEach((val) => {
             gsap.from(val, {
                 x: -100,
@@ -130,7 +132,7 @@ export default function home() {
         })
 
         // --------------------PROJECT CARD VFX------------------
-        const project_cards = document.querySelectorAll('#project-cards')
+        const project_cards = mainRf.current.querySelectorAll('.project-cards')
         project_cards.forEach((val) => {
             gsap.from(val, {
                 x: 200,
@@ -259,26 +261,19 @@ export default function home() {
             rotate: -30,
         })
 
-    }, [])
+    }, [use])
 
     return (
         <>
             <Container fluid>
-                <div className='said-cotainer'>
-                    <div></div>
-                    <i className="ri-github-fill"></i>
-                    <i className="ri-linkedin-box-fill"></i>
-                    <i className="ri-whatsapp-fill"></i>
-                </div>
-
-                <div className="main-container">
+                <div className="main-container"  ref={mainRf} >
                     {/* -----------------------------------------------------------INTRO------------------------------------------------ */}
                     <div className="content-1">
                         <div className="part-1">
                             <div className='main-text-container' ref={contentMainRf}>
                                 <h1 className='fs-2'>Surya is a <span className="levender-color"> web designer </span> and  <span className="levender-color"> full-stack developer</span></h1>
                                 <p style={{ fontSize: '15px' }} className=" gray-color main-text-p">He crafts responsive websites where technologies meet creativity</p>
-                                <button className="btn-varient-1">Contact me!!</button>
+                                <button className="btn-varient-1"><Link to="/contact" className='text-decoration-none gray-color'>Contact me  !!</Link></button>
                             </div>
                         </div>
                         <div className="part-2" ref={content1Rf}>
@@ -314,7 +309,7 @@ export default function home() {
                             {projects.map((val) => {
                                 return (
                                     <>
-                                        <div id="project-cards">
+                                        <div className="project-cards">
                                             <ProjectProvider img={val.img} tittle={val.tittle} link={val.page_link} tools={val.tools} summary={val.summary} key={val.index} />
                                         </div>
                                     </>
@@ -427,7 +422,7 @@ export default function home() {
                         <div className='tittle-div '>
                             <h2><span className='levender-color'>#</span>Contact</h2>
                             <div className='tittle-line'></div>
-                            <div className='viewall'><p>View all</p></div>
+                            <div className='viewall'><Link className='text-decoration-none gray-color' to="/contact"><p>View all</p></Link></div>
                         </div>
                         <Row>
                             <Col md={5}>

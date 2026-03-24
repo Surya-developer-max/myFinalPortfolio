@@ -1,9 +1,12 @@
 import ProjectProvider from "./projectProvider";
 import { ProjectContext } from "../App";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { Container } from 'react-bootstrap'
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 export default function project() {
+
+    // const mainRf=useRef()
 
     const smallProjects = [
         {
@@ -28,68 +31,131 @@ export default function project() {
 
 
     ]
-    
+
+    useGSAP(() => {
+        const tl = gsap.timeline();
+        tl.from('.main-tittle', {
+            x: -100,
+            opacity: 0,
+        })
+        tl.from('.main-tittle p', {
+            x: 100,
+            opacity: 0,
+        })
+        tl.from('.scroll-tittle1 h3', {
+            x: 100,
+            opacity: 0,
+        })
+        tl.from('.project-cards', {
+            y: 100,
+            opacity: 0,
+            stagger: 0.20,
+        })
+        gsap.from('.scroll-tittle h3', {
+            x: 100,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.scroll-tittle h3',
+                start: 'top 80%',
+                end: 'top 45%',
+                scrub: 1,
+            }
+        })
+        gsap.from('.small-projects', {
+            y: 80,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.small-projects',
+                start: 'top 70%',
+                end: 'top 55%',
+                scrub: true,
+            }
+        })
+
+        gsap.from('.contact-us1', {
+            x: -50,
+            opacity: 0,
+            stagger: 0.20,
+            scrollTrigger: {
+                trigger: '.contact-us1',
+                start: 'top 100%',
+                end: 'top 80%',
+                scrub: true,
+            }
+        })
+        gsap.from('.contact-us2', {
+            x: 50,
+            opacity: 0,
+            stagger: 0.20,
+            scrollTrigger: {
+                trigger: '.contact-us2',
+                start: 'top 100%',
+                end: 'top 80%',
+                scrub: true,
+            },
+        })
+    }, [])
     const projects = useContext(ProjectContext)
     return (
         <>
-        <Container fluid>
-            <div className="">
-                <div className="main-project-container">
-                    <div className='tittle-div d-block'>
-                        <h2><span className='levender-color'>/</span>projects</h2>
-                        <p style={{ fontSize: '12px' }} className="gray-color ms-3">List Of My Projects</p>
-                    </div>
-                    <div>
-                        <div className='tittle-div d-block mt-5'>
-                            <h3><span className='levender-color'>#</span>Complete-apps</h3>
+            <Container fluid>
+                <div className=" overflow-hidden" >
+                    <div className="main-project-container">
+                        <div className='tittle-div d-block main-tittle'>
+                            <h2><span className='levender-color'>/</span>projects</h2>
+                            <p style={{ fontSize: '12px' }} className="gray-color ms-3">List Of My Projects</p>
                         </div>
-                        <div className="project-body">
-                            {projects.map((val) => {
+                        <div>
+                            <div className='tittle-div d-block mt-5 scroll-tittle1'>
+                                <h3><span className='levender-color'>#</span>Complete-apps</h3>
+                            </div>
+                            <div className="project-body">
+                                {projects.map((val) => {
+                                    return (
+                                        <>
+                                            <div className="project-cards">
+                                                <ProjectProvider img={val.img} tittle={val.tittle} tools={val.tools} summary={val.summary} key={val.index} link={val.page_link} />
+                                            </div>
+                                        </>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        < div className='tittle-div d-block mt-5 scroll-tittle'>
+                            <h3><span className='levender-color'>#</span>Small Projects</h3>
+                        </div>
+                        <div className="d-flex flex-wrap justify-content-center justify-content-md-start mt-5">
+                            {smallProjects.map((val) => {
                                 return (
                                     <>
-                                        <div id="project-cards">
-                                            <ProjectProvider img={val.img} tittle={val.tittle} tools={val.tools} summary={val.summary} key={val.index} link={val.page_link} />
-                                        </div>
-                                    </>
-                                )
-                            })}
-                        </div>
-                    </div>
-                    < div className='tittle-div d-block mt-5'>
-                        <h3><span className='levender-color'>#</span>Small Projects</h3>
-                    </div>
-                    <div className="d-flex flex-wrap justify-content-center justify-content-md-start mt-5">
-                        {smallProjects.map((val) => {
-                            return (
-                                <>
-                                    <div className='project-card m-1' >
-                                        <div className="card-body p-0">
-                                            <div className='cb-1'>
-                                                <p className='gray-color m-0' style={{ padding: "5px" }}>{val.tools}</p>
-                                            </div>
-                                            <div className='cb-2'>
-                                                <h3 className="fs-6">{val.tittle}</h3>
-                                                <p style={{ fontSize: '12px' }} className="gray-color">{val.summary}</p>
-                                                <div>
-                                                    <button className='btn-varient-1 btn-sm'><a className="text-decoration-none  text-light" href={val.link} target="blank">Live</a></button>
+                                        <div className='project-card m-1 small-projects' >
+                                            <div className="card-body p-0">
+                                                <div className='cb-1'>
+                                                    <p className='gray-color m-0' style={{ padding: "5px" }}>{val.tools}</p>
+                                                </div>
+                                                <div className='cb-2'>
+                                                    <h3 className="fs-6">{val.tittle}</h3>
+                                                    <p style={{ fontSize: '12px' }} className="gray-color">{val.summary}</p>
+                                                    <div>
+                                                        <button className='btn-varient-1 btn-sm'><a className="text-decoration-none  text-light" href={val.link} target="blank">Live</a></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </>
-                            );
-                        })}
+                                    </>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
             </Container>
             <div className='footer my-3 overflow-hidden'>
                 <div className='d-flex justify-content-around my-4 border-top flex-wrap'>
-                    <div className='mt-4 footer-body-1'>
+                    <div className='mt-4 footer-body-1 contact-us1'>
                         <p>Surya <span className='gray-color' style={{ fontSize: '10px' }}>suryasanthoshh@gmail.com</span></p>
                         <p className='gray-color' style={{ fontSize: '12px' }}>Web designer and front-end developer</p>
                     </div>
-                    <div className='mt-4 footer-body-2' >
+                    <div className='mt-4 footer-body-2 contact-us2' >
                         <div>
                             <p className='m-0 fs-5'>Media</p>
                             <div>

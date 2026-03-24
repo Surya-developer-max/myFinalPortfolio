@@ -5,14 +5,20 @@ import { Route, Routes, Link } from "react-router-dom";
 import Home from "./Home";
 import Project from "./project";
 import About from "./aboutme";
+import Contact from "./contact";
 export default function navbar() {
 
     const tl2 = gsap.timeline();
     useGSAP(() => {
         const tl = gsap.timeline();
-        
+
 
         tl.from('.nav-hero', {
+            y: -50,
+            opacity: 0,
+            duration: 0.5
+        });
+        tl.from('.menu-icon', {
             y: -50,
             opacity: 0,
             duration: 0.5
@@ -28,10 +34,10 @@ export default function navbar() {
             duration: 0.5,
             ease: "power3.out"
         });
-        tl2.from('.close-icon',{
-            x:-50,
-            opacity:0,
-            rotate:360,
+        tl2.from('.close-icon', {
+            y: -50,
+            opacity: 0,
+            rotate: 360,
         })
         tl2.pause();
     }, []);
@@ -39,10 +45,10 @@ export default function navbar() {
         <>
             <div className="navbar ">
                 <div className="nav-hero">
-                    <h2>Surya</h2>
+                    <h2><Link to="/" className="text-light text-decoration-none">Surya</Link></h2>
                 </div>
                 <div className="menu-icon">
-                    <i className="ri-menu-2-fill" onClick={() => {  tl2.play() }}></i>
+                    <i className="ri-menu-2-fill" onClick={() => { tl2.play() }}></i>
                 </div>
                 <div className="nav-items">
                     <div className="close-icon" onClick={() => { tl2.reverse() }}>
@@ -51,7 +57,7 @@ export default function navbar() {
                     <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light" to='/'><span className='levender-color'>#</span>Home</Link></h3>
                     <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light" to="/about"><span className='levender-color'>#</span>About-me</Link></h3>
                     <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light" to="/project"><span className='levender-color'>#</span>Projects</Link></h3>
-                    <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light"><span className='levender-color'>#</span>Contacts</Link></h3>
+                    <h3 onClick={() => { tl2.reverse() }} className='gray-color nav-h3 '><Link className="text-decoration-none text-light" to="/contact"><span className='levender-color'>#</span>Contacts</Link></h3>
                 </div>
                 <div>
 
@@ -62,6 +68,7 @@ export default function navbar() {
                 <Route path="/" element={<Home />} />
                 <Route path="/project" element={<Project />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
             </Routes>
         </>
     )
