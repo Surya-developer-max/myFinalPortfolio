@@ -1,18 +1,16 @@
 import './App.css'
 import Navbar from './Components/navbar'
-import Project from './Components/project'
 import ProjectImg1 from './assets/img1.png'
 import ProjectImg2 from './assets/img2.png'
 import ProjectImg3 from './assets/img3.png'
 import ProjectImg4 from './assets/img4.png'
 import { createContext } from "react";
-import About from './Components/aboutme'
-import Contact from './Components/contact.jsx'
 
 export const ProjectContext = createContext();
 function App() {
   const projectData  = [
     {
+      id:1,
       img: ProjectImg1,
       tools: "HTML CSS Bootstrap5 Js React ",
       tittle: "Portfolio",
@@ -20,6 +18,7 @@ function App() {
       page_link: "https://visitemeat.netlify.app/"
     },
     {
+      id:2,
       img: ProjectImg2,
       tools: "HTML CSS Bootstrap5 Js React ",
       tittle: "Junior Kuppanna",
@@ -27,6 +26,7 @@ function App() {
       page_link: "https://juniorkuppana.netlify.app/"
     },
     {
+      id:3,
       img: ProjectImg3,
       tools: "HTML CSS Bootstrap5 Js React ",
       tittle: "The Kitchn",
@@ -34,6 +34,7 @@ function App() {
       page_link: "https://thekitchns.netlify.app/"
     },
     {
+      id:4,
       img: ProjectImg4,
       tools: "HTML CSS Bootstrap5 Js React ",
       tittle: "My PortFolio",

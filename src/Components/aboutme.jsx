@@ -226,9 +226,9 @@ export default function about() {
                         <div>
                             <p className='m-0 fs-5'>Media</p>
                             <div>
-                                <i className=" mx-1 ri-github-fill"></i>
-                                <i className=" mx-1 ri-linkedin-box-fill"></i>
-                                <i className=" mx-1 ri-whatsapp-fill"></i>
+                                 <a href="https://github.com/Surya-developer-max" className='text-decoration-none gray-color'><i className=" mx-1 ri-github-fill"></i></a>
+                                <a href="https://www.linkedin.com/in/suryawebdeveloper/" className='text-decoration-none gray-color'><i className=" mx-1 ri-linkedin-box-fill"></i></a>
+                                <a href="https://wa.me/+919944487227?text=Hello%20Broo...!%20" className='text-decoration-none gray-color'><i className="ri-whatsapp-fill"></i></a>
                             </div>
                         </div>
                     </div>

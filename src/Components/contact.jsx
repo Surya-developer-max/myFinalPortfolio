@@ -66,12 +66,12 @@ export default function Contact() {
                                 <div className="about-body2 d-flex justify-content-md-end justify-content-center flex-wrap w-100" >
                                     <div className='contact-me m-1'>
                                         <h3 className='fs-6 m-0 p-3'>Suport me here</h3>
-                                        <p className=' m-0 my-1 mx-2 gray-color'>+91 99444 87227</p>
+                                        <p className=' m-0 my-1 mx-2 '> <a href="tel:+919944487227" className='gray-color text-decoration-none'>+91 99444 87227</a></p>
                                     </div>
                                     <div className='contact-me m-1 mb-5'>
                                         <h3 className='fs-6 m-0 p-3'>Message Me Here</h3>
-                                        <p className=' m-0 my-1 mx-2 gray-color'><i className="ri-whatsapp-fill"></i> Whstsapp</p>
-                                        <p className=' m-0 my-1 mx-2 gray-color'><i className="ri-mail-fill"></i> Email</p>
+                                        <a href="https://wa.me/+919944487227?text=Hello%20Broo...!%20" className='text-decoration-none' target="_blank"><p className=' m-0 my-1 mx-2 gray-color'><i className="ri-whatsapp-fill me-2"></i>Whstsapp</p></a>
+                                        <a href="mailto:stmugesh123@gmail.com" className='text-decoration-none gray-color'> <p className=' m-0 my-1 mx-2 '><i className="ri-mail-fill"></i> Email</p></a>
                                     </div>
                                 </div>
                             </Col>
@@ -85,7 +85,7 @@ export default function Contact() {
                         </div>
                     </div>
                 </div>
-            </Container>
+            </Container >
             <div className='footer my-3 overflow-hidden'>
                 <div className='d-flex justify-content-around my-4 border-top flex-wrap'>
                     <div className='mt-4 footer-body-1 contact1'>
@@ -96,16 +96,16 @@ export default function Contact() {
                         <div className='contact2'>
                             <p className='m-0 fs-5'>Media</p>
                             <div>
-                                <i className=" mx-1 ri-github-fill"></i>
-                                <i className=" mx-1 ri-linkedin-box-fill"></i>
-                                <i className=" mx-1 ri-whatsapp-fill"></i>
+                                <a href="https://github.com/Surya-developer-max" className='text-decoration-none gray-color'><i className=" mx-1 ri-github-fill"></i></a>
+                                <a href="https://www.linkedin.com/in/suryawebdeveloper/" className='text-decoration-none gray-color'><i className=" mx-1 ri-linkedin-box-fill"></i></a>
+                                <a href="https://wa.me/+919944487227?text=Hello%20Broo...!%20" className='text-decoration-none gray-color'><i className="ri-whatsapp-fill"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div >
                     <center>
-                        <p className='gray-color mt-5 rights' style={{ fontSize: '10px' }}>© Copyright 2022. Made by Elias</p>
+                        <p className='gray-color mt-5 rights' style={{ fontSize: '10px' }}>© Copyright 2022. Made by Surya</p>
                     </center>
                 </div>
             </div>

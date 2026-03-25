@@ -3,7 +3,7 @@ import gsap from "gsap"
 export default function projectProvider(props) {
     return (
         <>
-            <div className='project-card' key={props.tittle}>
+            <div className='project-card' key={props.key}>
                 <div className='card-img'>
                     <img src={props.img} alt="" />
                 </div>

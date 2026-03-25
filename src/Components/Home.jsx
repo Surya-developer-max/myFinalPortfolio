@@ -23,9 +23,9 @@ export default function home() {
     const content1Rf = useRef();
     const contentMainRf = useRef();
     const skill_card_ref = useRef();
-    const mainRf=useRef();
+    const mainRf = useRef();
     const projects = useContext(ProjectContext)
-    const [use,setUse]=useState()
+    const [use, setUse] = useState()
     useGSAP(() => {
         // ------------------------TEXT SPLITER VFX-------------------------------
         const tex = document.querySelector(".con2-p").textContent;
@@ -40,16 +40,12 @@ export default function home() {
             }
 
         })
-         document.querySelector(".con2-p").innerHTML = final_text;
+        document.querySelector(".con2-p").innerHTML = final_text;
 
         // --------------------------LOADING PAGE VFX------------------------
         const elements = gsap.utils.toArray(content1Rf.current.children)
         const elements2 = gsap.utils.toArray(contentMainRf.current.children)
         const tl = gsap.timeline();
-        tl.from('.said-cotainer', {
-            y: -100,
-            opacity: 0,
-        })
         elements2.forEach(val => {
             tl.from(val, {
                 y: 50,
@@ -63,7 +59,8 @@ export default function home() {
                 x: 100,
                 opacity: 0,
                 duration: 0.2,
-                rotate: 10,
+                ease: 'elastic.in'
+                // rotate: 10,
             })
         })
         // --------------CON-PART-2-----------------
@@ -75,10 +72,10 @@ export default function home() {
             opacity: 0,
         })
         tl.from('.con2-p span', {
-            y: 30,
-            stagger: 0.1,
+            stagger: 0.10,
             opacity: 0,
             duration: 0.2,
+            rotateX: 180,
         })
         tl.from('.content-2 .rect-img', {
             x: 50,
@@ -261,12 +258,12 @@ export default function home() {
             rotate: -30,
         })
 
-    }, [use])
+    }, [])
 
     return (
         <>
             <Container fluid>
-                <div className="main-container"  ref={mainRf} >
+                <div className="main-container" ref={mainRf} >
                     {/* -----------------------------------------------------------INTRO------------------------------------------------ */}
                     <div className="content-1">
                         <div className="part-1">
@@ -310,7 +307,7 @@ export default function home() {
                                 return (
                                     <>
                                         <div className="project-cards">
-                                            <ProjectProvider img={val.img} tittle={val.tittle} link={val.page_link} tools={val.tools} summary={val.summary} key={val.index} />
+                                            <ProjectProvider img={val.img} tittle={val.tittle} link={val.page_link} tools={val.tools} summary={val.summary} key={val.id} />
                                         </div>
                                     </>
                                 )
@@ -431,8 +428,8 @@ export default function home() {
                             <Col md={7} className='d-flex justify-content-center align-items-center'>
                                 <div className='contact-me'>
                                     <h3 className='fs-6 m-0 p-3'>Message Me Here</h3>
-                                    <p className=' m-0 my-1 mx-2 gray-color'><i className="ri-whatsapp-fill"></i> Whstsapp</p>
-                                    <p className=' m-0 my-1 mx-2 gray-color'><i className="ri-mail-fill"></i> Email</p>
+                                    <a href="https://wa.me/+919944487227?text=Hello%20Broo...!%20" className='text-decoration-none' target="_blank"><p className=' m-0 my-1 mx-2 gray-color'><i className="ri-whatsapp-fill me-2"></i>Whstsapp</p></a>
+                                    <a href="mailto:stmugesh123@gmail.com" className='text-decoration-none gray-color'> <p className=' m-0 my-1 mx-2 '><i className="ri-mail-fill"></i> Email</p></a>
                                 </div>
                             </Col>
                         </Row>
@@ -440,7 +437,7 @@ export default function home() {
                 </div>
             </Container>
 
-            {/* ---------------------------------------------FOOTER----------------------------------- */}
+            {/* ---------------------------------------------FOOTER----------------------------------- https://www.linkedin.com/in/suryawebdeveloper/ */}
             <div className='footer my-5         overflow-hidden'>
                 <div className='d-flex justify-content-around my-4 border-top flex-wrap'>
                     <div className='mt-4 footer-body-1'>
@@ -451,9 +448,9 @@ export default function home() {
                         <div>
                             <p className='m-0 fs-5'>Media</p>
                             <div>
-                                <i className=" mx-1 ri-github-fill"></i>
-                                <i className=" mx-1 ri-linkedin-box-fill"></i>
-                                <i className=" mx-1 ri-whatsapp-fill"></i>
+                                <a href="https://github.com/Surya-developer-max" className='text-decoration-none gray-color'><i className=" mx-1 ri-github-fill"></i></a>
+                                <a href="https://www.linkedin.com/in/suryawebdeveloper/" className='text-decoration-none gray-color'><i className=" mx-1 ri-linkedin-box-fill"></i></a>
+                                <a href="https://wa.me/+919944487227?text=Hello%20Broo...!%20" className='text-decoration-none gray-color'><i className="ri-whatsapp-fill"></i></a>
                             </div>
                         </div>
                     </div>
