@@ -79,8 +79,8 @@ export default function Contact() {
                         <div className='tittle-div d-block mt-5 pt-5 tittle2'>
                             <h2><span className='levender-color'>/</span>All-media</h2>
                             <div className='d-flex flex-wrap'>
-                                <p style={{ fontSize: '12px' }} className="gray-color ms-2">Insta</p>
-                                <p style={{ fontSize: '12px' }} className="gray-color ms-2">whatsapp</p>
+                                <a href="" className='text-decoration-none'><p style={{ fontSize: '12px' }} className="gray-color ms-2"><i class="ri-instagram-fill"></i>Insta</p></a>
+                                <a href="https://wa.me/+919944487227?text=Hello%20Broo...!%20" className='text-decoration-none gray-color'>    <p style={{ fontSize: '12px' }} className="gray-color ms-2"><i class="ri-whatsapp-fill"></i>whatsapp</p></a>
                             </div>
                         </div>
                     </div>

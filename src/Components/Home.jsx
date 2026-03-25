@@ -1,6 +1,6 @@
 import ProjectProvider from './projectProvider'
 import { ProjectContext } from "../App";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRef } from 'react';
 
 import OutlineImg from '../assets/StyleOutline.png'
