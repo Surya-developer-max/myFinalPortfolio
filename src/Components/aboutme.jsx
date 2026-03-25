@@ -194,10 +194,9 @@ export default function about() {
                                 <div className='fun-facts'>
                                     <p className='gray-color'>I like winter more than summer</p>
                                     <p className='gray-color'>I often bike with my friends</p>
-                                    <p className='gray-color'>I like pizza and pasta</p>
-                                    <p className='gray-color'>I was in Egypt, Poland and Turkey</p>
-                                    <p className='gray-color'>My favorite movie is The Green Mile</p>
-                                    <p className='gray-color'>I am still in school</p>
+                                    <p className='gray-color'>I like dry Fish</p>
+                                    <p className='gray-color'>I was in India, Tamilnadu</p>
+                                    <p className='gray-color'>My favorite movie is Leo</p>
                                     <p className='gray-color'>I  have  siblings</p>
                                 </div>
                             </Col>
