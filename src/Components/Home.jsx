@@ -267,9 +267,9 @@ export default function home() {
 
 
 
-            setTimeout(() => {
+            setInterval(() => {
                 ScrollTrigger.refresh();
-            }, 150);
+            },1000);
         })
         return () => ctx.revert();
     }, [])
