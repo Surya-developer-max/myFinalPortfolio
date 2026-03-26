@@ -34,6 +34,8 @@ export default function project() {
     ]
 
     useGSAP(() => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        console.log(isMobile)
         const tl = gsap.timeline();
         tl.from('.main-tittle', {
             x: -100,
@@ -55,17 +57,20 @@ export default function project() {
 
         const porjectCards = projectRf.current.querySelectorAll('.project-cards')
         console.log(porjectCards)
-        porjectCards.forEach((val) => {
-            gsap.to(val, {
-                x: "-130%",
-                scrollTrigger: {
-                    trigger: val,
-                    start: '0% 20%',
-                    end: 'top 0%',
-                    scrub: 0.2,
-                }
+        {
+            isMobile && porjectCards.forEach((val) => {
+                gsap.to(val, {
+                    x: "-130%",
+                    scrollTrigger: {
+                        trigger: val,
+                        start: '0% 20%',
+                        end: 'top 0%',
+                        scrub: 0.2,
+                    }
+                })
             })
-        })
+        }
+
 
         gsap.from('.scroll-tittle h3', {
             x: 100,

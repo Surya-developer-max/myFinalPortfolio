@@ -29,6 +29,7 @@ export default function home() {
     const projects = useContext(ProjectContext)
     const [use, setUse] = useState()
     useGSAP(() => {
+
         const ctx = gsap.context(() => {
             // ------------------------TEXT SPLITER VFX-------------------------------
             const tex = document.querySelector(".con2-p").textContent;
