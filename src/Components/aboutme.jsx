@@ -14,7 +14,7 @@ export default function about() {
     const aboutBody1 = useRef()
     const skillRf = useRef()
     const tl = gsap.timeline();
-    const [count,setCount]=useState()
+    const [count, setCount] = useState()
     useGSAP(() => {
         const body1Elements = gsap.utils.toArray(aboutBody1.current.children)
         tl.from('.t2-div h2', {
@@ -103,6 +103,10 @@ export default function about() {
                 scrub: true,
             }
         })
+
+        setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 150);
 
     }, [count])
     return (
@@ -225,7 +229,7 @@ export default function about() {
                         <div>
                             <p className='m-0 fs-5'>Media</p>
                             <div>
-                                 <a href="https://github.com/Surya-developer-max" className='text-decoration-none gray-color'><i className=" mx-1 ri-github-fill"></i></a>
+                                <a href="https://github.com/Surya-developer-max" className='text-decoration-none gray-color'><i className=" mx-1 ri-github-fill"></i></a>
                                 <a href="https://www.linkedin.com/in/suryawebdeveloper/" className='text-decoration-none gray-color'><i className=" mx-1 ri-linkedin-box-fill"></i></a>
                                 <a href="https://wa.me/+919944487227?text=Hello%20Broo...!%20" className='text-decoration-none gray-color'><i className="ri-whatsapp-fill"></i></a>
                             </div>

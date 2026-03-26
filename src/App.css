@@ -149,6 +149,10 @@ button {
     padding: 30px;
 }
 
+.con2-p span {
+    display: inline-block;
+}
+
 .c2-part-2 {
     position: absolute;
     width: 100px;
@@ -161,10 +165,6 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.con2-p span {
-    display: inline-block;
 }
 
 .quets-1 {

@@ -15,7 +15,9 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(SplitText);
 
 import { Link } from 'react-router-dom'
 
@@ -23,241 +25,253 @@ export default function home() {
     const content1Rf = useRef();
     const contentMainRf = useRef();
     const skill_card_ref = useRef();
-    const mainRf = useRef();
+    const mainRf = useRef(null);
     const projects = useContext(ProjectContext)
     const [use, setUse] = useState()
     useGSAP(() => {
-        // ------------------------TEXT SPLITER VFX-------------------------------
-        const tex = document.querySelector(".con2-p").textContent;
-        const split_text = tex.split("");
-        var final_text = ""
-        split_text.forEach(v => {
-            if (v == " ") {
-                final_text += `<span>&nbsp;</span>`
-            }
-            else {
-                final_text += `<span>${v}</span>`
-            }
+        const ctx = gsap.context(() => {
+            // ------------------------TEXT SPLITER VFX-------------------------------
+            const tex = document.querySelector(".con2-p").textContent;
+            const split_text = tex.split("");
+            var final_text = ""
+            split_text.forEach(v => {
+                if (v == " ") {
+                    final_text += `<span>&nbsp;</span>`
+                }
+                else {
+                    final_text += `<span>${v}</span>`
+                }
 
-        })
-        document.querySelector(".con2-p").innerHTML = final_text;
-
-        // --------------------------LOADING PAGE VFX------------------------
-        const elements = gsap.utils.toArray(content1Rf.current.children)
-        const elements2 = gsap.utils.toArray(contentMainRf.current.children)
-        const tl = gsap.timeline();
-        elements2.forEach(val => {
-            tl.from(val, {
-                y: 50,
-                opacity: 0,
-                duration: 0.3,
-                ease: 'power1.in'
             })
-        })
-        elements.forEach(val => {
-            tl.from(val, {
-                x: 100,
-                opacity: 0,
-                duration: 0.2,
-                ease: 'elastic.in'
-                // rotate: 10,
+            document.querySelector(".con2-p").innerHTML = final_text;
+
+            // --------------------------LOADING PAGE VFX------------------------
+            const elements = gsap.utils.toArray(content1Rf.current.children)
+            const elements2 = gsap.utils.toArray(contentMainRf.current.children)
+            const tl = gsap.timeline();
+            elements2.forEach(val => {
+                tl.from(val, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'power1.in'
+                })
             })
-        })
-        // --------------CON-PART-2-----------------
-        tl.from('.part2-bottom-div p', {
-            opacity: 0,
-        })
-        tl.from('.content-2 .c2-part-1', {
-            y: 100,
-            opacity: 0,
-        })
-        tl.from('.con2-p span', {
-            stagger: 0.10,
-            opacity: 0,
-            duration: 0.2,
-            rotateX: 180,
-        })
-        tl.from('.content-2 .rect-img', {
-            x: 50,
-            opacity: 0,
-        })
+            elements.forEach(val => {
+                tl.from(val, {
+                    x: 100,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: 'elastic.in'
+                    // rotate: 10,
+                })
+            })
+            // --------------CON-PART-2-----------------
+            tl.from('.part2-bottom-div p', {
+                opacity: 0,
+            })
+                .from('.content-2 .c2-part-1', {
+                    y: 100,
+                    opacity: 0,
+                })
+                .from('.con2-p span', {
+                    stagger: 0.10,
+                    opacity: 0,
+                    duration: 0.2,
+                    rotateX: 180,
+                })
+                .from('.content-2 .rect-img', {
+                    x: 50,
+                    opacity: 0,
+                })
 
-        // -------------------------------SCROLL TRIGGER EFX----------------------------
+            // -------------------------------SCROLL TRIGGER EFX----------------------------
 
-        // -------------------------ALL TITTLES-----------------
-        const tittles = mainRf.current.querySelectorAll('.tittle-div h2')
-        const tittle_line = mainRf.current.querySelectorAll('.tittle-line')
-        const tittle_viewall = mainRf.current.querySelectorAll('.viewall')
-        tittles.forEach((val) => {
-            gsap.from(val, {
+            const tittles = mainRf.current.querySelectorAll('.tittle-div h2')
+            const tittle_line = mainRf.current.querySelectorAll('.tittle-line')
+            const tittle_viewall = mainRf.current.querySelectorAll('.viewall')
+            const project_cards = mainRf.current.querySelectorAll('.project-cards')
+
+            // -------------------------ALL TITTLES-----------------
+
+            tittles.forEach((val) => {
+                gsap.from(val, {
+                    x: -100,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: val,
+                        start: "top 90%",
+                        end: "top 30%",
+                        scroller: "body",
+                        scrub: true,
+                    },
+                    stagger: 0.15,
+                })
+            })
+            tittle_line.forEach((val) => {
+                gsap.from(val, {
+                    x: 100,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: val,
+                        start: "top 90%",
+                        end: "top 30%",
+                        scroller: "body",
+                        scrub: true,
+                    }
+                })
+            })
+            tittle_viewall.forEach((val) => {
+                gsap.from(val, {
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: val,
+                        start: "top 90%",
+                        end: "top 30%",
+                        scroller: "body",
+                        scrub: true,
+                    }
+                })
+            })
+
+            // --------------------PROJECT CARD VFX------------------
+
+            project_cards.forEach((val) => {
+                gsap.from(val, {
+                    x: 200,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: val,
+                        start: 'top 90%',
+                        end: 'top 10%',
+                        scrub: true,
+                    }
+                })
+            })
+
+            // --------------------------SIKILL VFX ----------------------
+            const skill_card = gsap.utils.toArray(skill_card_ref.current.children)
+            gsap.from('.skil-body-1 img', {
                 x: -100,
+                y: 100,
                 opacity: 0,
                 scrollTrigger: {
-                    trigger: val,
-                    start: "top 90%",
-                    end: "top 30%",
-                    scroller: "body",
-                    scrub: true,
-                },
-                stagger: 0.15,
-            })
-        })
-        tittle_line.forEach((val) => {
-            gsap.from(val, {
-                x: 100,
-                opacity: 0,
-                scrollTrigger: {
-                    trigger: val,
-                    start: "top 90%",
-                    end: "top 30%",
-                    scroller: "body",
-                    scrub: true,
-                }
-            })
-        })
-        tittle_viewall.forEach((val) => {
-            gsap.from(val, {
-                opacity: 0,
-                scrollTrigger: {
-                    trigger: val,
-                    start: "top 90%",
-                    end: "top 30%",
-                    scroller: "body",
-                    scrub: true,
-                }
-            })
-        })
-
-        // --------------------PROJECT CARD VFX------------------
-        const project_cards = mainRf.current.querySelectorAll('.project-cards')
-        project_cards.forEach((val) => {
-            gsap.from(val, {
-                x: 200,
-                opacity: 0,
-                scrollTrigger: {
-                    trigger: val,
-                    start: 'top 90%',
-                    end: 'top 10%',
-                    scrub: true,
-                }
-            })
-        })
-
-        // --------------------------SIKILL VFX ----------------------
-        const skill_card = gsap.utils.toArray(skill_card_ref.current.children)
-        gsap.from('.skil-body-1 img', {
-            x: -100,
-            y: 100,
-            opacity: 0,
-            scrollTrigger: {
-                trigger: '.skil-body-1 img',
-                start: 'top 90%',
-                end: 'top 20%',
-                scrub: true,
-            },
-            rotate: 90,
-
-            stagger: {
-                from: 'random',
-                amount: 1,
-            }
-        })
-        skill_card.forEach((val) => {
-            gsap.from(val, {
-                x: 100,
-                opacity: 0,
-                scrollTrigger: {
-                    trigger: val,
+                    trigger: '.skil-body-1 img',
                     start: 'top 90%',
                     end: 'top 20%',
                     scrub: true,
                 },
-                rotate: 20,
+                rotate: 90,
+
+                stagger: {
+                    from: 'random',
+                    amount: 1,
+                }
             })
-        })
-        gsap.from('.skill-card-body p', {
-            y: 10,
-            opacity: 0,
-            scrollTrigger: {
-                trigger: '.skill-card-body p',
-                start: 'top 90%',
-                end: 'top 20%',
-                scrub: true,
-            }
-        })
+            skill_card.forEach((val) => {
+                gsap.from(val, {
+                    x: 100,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: val,
+                        start: 'top 90%',
+                        end: 'top 20%',
+                        scrub: true,
+                    },
+                    rotate: 20,
+                })
+            })
 
-        // -----------------------------------ABOUT VFX------------------------------
-        gsap.from('.about-body-1 p', {
-            y: 50,
-            opacity: 0,
-            stagger: 0.12,
-            scrollTrigger: {
-                trigger: '.about-body-1 p',
-                start: 'top 90%',
-                end: 'top 20%',
-                scrub: true,
-            }
-        })
-        gsap.from('.about-img-container img', {
-            x: 100,
-            opacity: 0,
-            stagger: 0.20,
-            scrollTrigger: {
-                trigger: '.about-img-container img',
-                start: 'top 90%',
-                end: 'top 20%',
-                scrub: true,
-            }
-        })
+            gsap.from('.skill-card-body p', {
+                y: 10,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: '.skill-card-body p',
+                    start: 'top 90%',
+                    end: 'top 20%',
+                    scrub: true,
+                }
+            })
 
-        // -----------------------------------CONTACT VFX------------------------
-        gsap.from('.contact-us', {
-            x: -50,
-            opacity: 0,
-            stagger: 0.20,
-            scrollTrigger: {
-                trigger: '.contact-us',
-                start: 'top 80%',
-                end: 'top 50%',
-                scrub: true,
-            }
-        })
-        gsap.from('.contact-me', {
-            x: 50,
-            opacity: 0,
-            stagger: 0.20,
-            scrollTrigger: {
-                trigger: '.contact-me',
-                start: 'top 80%',
-                end: 'top 50%',
-                scrub: true,
-            },
-        })
-        // -----------------------FOOTER VFX-------------------------------------
-        gsap.from('.footer-body-2', {
-            opacity: 0,
+            // -----------------------------------ABOUT VFX------------------------------
+            gsap.from('.about-body-1 p', {
+                y: 50,
+                opacity: 0,
+                stagger: 0.12,
+                scrollTrigger: {
+                    trigger: '.about-body-1 p',
+                    start: 'top 90%',
+                    end: 'top 20%',
+                    scrub: true,
+                }
+            })
+            gsap.from('.about-img-container img', {
+                x: 100,
+                opacity: 0,
+                stagger: 0.20,
+                scrollTrigger: {
+                    trigger: '.about-img-container img',
+                    start: 'top 90%',
+                    end: 'top 20%',
+                    scrub: true,
+                }
+            })
 
-            x: 80,
-            scrollTrigger: {
-                trigger: '.footer-body-2',
-                start: 'top 90%',
-                end: 'top 70%',
-                scrub: true,
-            },
-            rotate: 30,
-        })
-        gsap.from('.footer-body-1', {
-            opacity: 0,
-            x: -80,
-            scrollTrigger: {
-                trigger: '.footer-body-1',
-                start: 'top 90%',
-                end: 'top 70%',
-                scrub: true,
-            },
-            rotate: -30,
-        })
+            // -----------------------------------CONTACT VFX------------------------
+            gsap.from('.contact-us', {
+                x: -50,
+                opacity: 0,
+                stagger: 0.20,
+                scrollTrigger: {
+                    trigger: '.contact-us',
+                    start: 'top 80%',
+                    end: 'top 50%',
+                    scrub: true,
+                }
+            })
+            gsap.from('.contact-me', {
+                x: 50,
+                opacity: 0,
+                stagger: 0.20,
+                scrollTrigger: {
+                    trigger: '.contact-me',
+                    start: 'top 80%',
+                    end: 'top 50%',
+                    scrub: true,
+                },
+            })
+            // -----------------------FOOTER VFX-------------------------------------
+            gsap.from('.footer-body-2', {
+                opacity: 0,
 
+                x: 80,
+                scrollTrigger: {
+                    trigger: '.footer-body-2',
+                    start: 'top 90%',
+                    end: 'top 70%',
+                    scrub: true,
+                },
+                rotate: 30,
+            })
+            gsap.from('.footer-body-1', {
+                opacity: 0,
+                x: -80,
+                scrollTrigger: {
+                    trigger: '.footer-body-1',
+                    start: 'top 90%',
+                    end: 'top 70%',
+                    scrub: true,
+                },
+                rotate: -30,
+            })
+
+
+
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 150);
+        })
+        return () => ctx.revert();
     }, [])
 
     return (

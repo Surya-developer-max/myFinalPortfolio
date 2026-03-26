@@ -4,9 +4,10 @@ import { useContext, useRef } from "react";
 import { Container } from 'react-bootstrap'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 export default function project() {
 
-    // const mainRf=useRef()
+    const projectRf = useRef()
 
     const smallProjects = [
         {
@@ -38,19 +39,34 @@ export default function project() {
             x: -100,
             opacity: 0,
         })
-        tl.from('.main-tittle p', {
-            x: 100,
-            opacity: 0,
+            .from('.main-tittle p', {
+                x: 100,
+                opacity: 0,
+            })
+            .from('.scroll-tittle1 h3', {
+                x: 100,
+                opacity: 0,
+            })
+            .from('.project-cards', {
+                y: 100,
+                opacity: 0,
+                stagger: 0.20,
+            })
+
+        const porjectCards = projectRf.current.querySelectorAll('.project-cards')
+        console.log(porjectCards)
+        porjectCards.forEach((val) => {
+            gsap.to(val, {
+                x: "-130%",
+                scrollTrigger: {
+                    trigger: val,
+                    start: '0% 20%',
+                    end: 'top 0%',
+                    scrub: 0.2,
+                }
+            })
         })
-        tl.from('.scroll-tittle1 h3', {
-            x: 100,
-            opacity: 0,
-        })
-        tl.from('.project-cards', {
-            y: 100,
-            opacity: 0,
-            stagger: 0.20,
-        })
+
         gsap.from('.scroll-tittle h3', {
             x: 100,
             opacity: 0,
@@ -71,7 +87,6 @@ export default function project() {
                 scrub: true,
             }
         })
-
         gsap.from('.contact-us1', {
             x: -50,
             opacity: 0,
@@ -94,6 +109,11 @@ export default function project() {
                 scrub: true,
             },
         })
+
+        setTimeout(() => {
+            console.log("hiiii")
+            ScrollTrigger.refresh();
+        }, 150);
     }, [])
     const projects = useContext(ProjectContext)
     return (
@@ -109,11 +129,11 @@ export default function project() {
                             <div className='tittle-div d-block mt-5 scroll-tittle1'>
                                 <h3><span className='levender-color'>#</span>Complete-apps</h3>
                             </div>
-                            <div className="project-body">
+                            <div className="project-body" ref={projectRf} >
                                 {projects.map((val) => {
                                     return (
                                         <>
-                                            <div className="project-cards">
+                                            <div className="project-cards" >
                                                 <ProjectProvider img={val.img} tittle={val.tittle} tools={val.tools} summary={val.summary} key={val.id} link={val.page_link} />
                                             </div>
                                         </>

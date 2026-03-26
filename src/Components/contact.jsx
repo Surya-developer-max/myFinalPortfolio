@@ -8,42 +8,42 @@ export default function Contact() {
             x: -100,
             opacity: 0,
         })
-        tl.from('.tittle1 p', {
-            x: 100,
-            opacity: 0
-        })
-        tl.from('.about-body1', {
-            y: 50,
-            opacity: 0,
-        })
-        tl.from('.contact-me', {
-            y: 50,
-            opacity: 0,
-            stagger: 0.20,
-        })
-        tl.from('.tittle2 h2', {
-            x: -100,
-            opacity: 0,
-        })
-        tl.from('.tittle2 div p', {
-            y: 100,
-            opacity: 0,
-            stagger: 0.20,
-            rotate: 30,
-        })
-        tl.from('.contact1 p', {
-            x: -100,
-            opacity: 0,
-            stagger: 0.20,
-        })
-        tl.from('.contact2 ', {
-            x: 100,
-            opacity: 0,
-        })
-        tl.from('.rights', {
-            y: 50,
-            opacity: 0,
-        })
+            .from('.tittle1 p', {
+                x: 100,
+                opacity: 0
+            })
+            .from('.about-body1', {
+                y: 50,
+                opacity: 0,
+            })
+            .from('.contact-me', {
+                y: 50,
+                opacity: 0,
+                stagger: 0.20,
+            })
+            .from('.tittle2 h2', {
+                x: -100,
+                opacity: 0,
+            })
+            .from('.tittle2 div p', {
+                y: 100,
+                opacity: 0,
+                stagger: 0.20,
+                rotate: 30,
+            })
+            .from('.contact1 p', {
+                x: -100,
+                opacity: 0,
+                stagger: 0.20,
+            })
+            .from('.contact2 ', {
+                x: 100,
+                opacity: 0,
+            })
+            .from('.rights', {
+                y: 50,
+                opacity: 0,
+            })
     }, [])
     return (
         <>
