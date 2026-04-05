@@ -54,24 +54,6 @@ export default function project() {
                 opacity: 0,
                 stagger: 0.20,
             })
-
-        const porjectCards = projectRf.current.querySelectorAll('.project-cards')
-        console.log(porjectCards)
-        {
-            isMobile && porjectCards.forEach((val) => {
-                gsap.to(val, {
-                    x: "-130%",
-                    scrollTrigger: {
-                        trigger: val,
-                        start: '0% 20%',
-                        end: 'top 0%',
-                        scrub: 0.2,
-                    }
-                })
-            })
-        }
-
-
         gsap.from('.scroll-tittle h3', {
             x: 100,
             opacity: 0,

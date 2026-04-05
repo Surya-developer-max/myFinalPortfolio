@@ -54,8 +54,8 @@ export default function home() {
                 tl.from(val, {
                     y: 50,
                     opacity: 0,
-                    duration: 0.3,
-                    ease: 'power1.in'
+                    duration: 0.5,
+                    // ease: 'power1.in'
                 })
             })
             elements.forEach(val => {
@@ -63,8 +63,7 @@ export default function home() {
                     x: 100,
                     opacity: 0,
                     duration: 0.2,
-                    ease: 'elastic.in'
-                    // rotate: 10,
+                    // ease: 'elastic.in'
                 })
             })
             // --------------CON-PART-2-----------------
