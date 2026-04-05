@@ -269,7 +269,7 @@ export default function home() {
 
             setInterval(() => {
                 ScrollTrigger.refresh();
-            },1000);
+            }, 1000);
         })
         return () => ctx.revert();
     }, [])
@@ -298,7 +298,7 @@ export default function home() {
                     </div>
                     <div className='content-2 '>
                         <div className='c2-part-1'>
-                            <p className='con2-p'>With great power comes great electricity bill</p>
+                            <p className='con2-p'>great power comes great With  electricity bill</p>
                             <div className='c2-part-2'><p className='m-0'>- Surya</p></div>
                             <img src={Quets} alt="" className='quets-1' />
                             <img src={Quets} alt="" className='quets-2' />
