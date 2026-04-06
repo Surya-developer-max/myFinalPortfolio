@@ -50,7 +50,6 @@ export default function about() {
                     trigger: val,
                     start: 'top 90%',
                     end: 'top 45%',
-                    scrub: true,
 
                 }
             })
@@ -65,7 +64,6 @@ export default function about() {
                     trigger: val,
                     start: 'top 80%',
                     end: 'top 45%',
-                    scrub: true,
 
                 }
             })
@@ -84,7 +82,6 @@ export default function about() {
                 trigger: '.fun-facts p',
                 start: 'top 90%',
                 end: 'top 45%',
-                scrub: true,
 
             }
         })
@@ -100,7 +97,6 @@ export default function about() {
                 trigger: ".skil-body-1 img",
                 start: 'top 90%',
                 end: 'top 45%',
-                scrub: true,
             }
         })
 

@@ -103,7 +103,6 @@ export default function home() {
                         start: "top 90%",
                         end: "top 30%",
                         scroller: "body",
-                        scrub: true,
                     },
                     stagger: 0.15,
                 })
@@ -117,7 +116,6 @@ export default function home() {
                         start: "top 90%",
                         end: "top 30%",
                         scroller: "body",
-                        scrub: true,
                     }
                 })
             })
@@ -129,7 +127,6 @@ export default function home() {
                         start: "top 90%",
                         end: "top 30%",
                         scroller: "body",
-                        scrub: true,
                     }
                 })
             })
@@ -144,7 +141,6 @@ export default function home() {
                         trigger: val,
                         start: 'top 90%',
                         end: 'top 10%',
-                        scrub: true,
                     }
                 })
             })
@@ -159,7 +155,6 @@ export default function home() {
                     trigger: '.skil-body-1 img',
                     start: 'top 90%',
                     end: 'top 20%',
-                    scrub: true,
                 },
                 rotate: 90,
 
@@ -176,7 +171,6 @@ export default function home() {
                         trigger: val,
                         start: 'top 90%',
                         end: 'top 20%',
-                        scrub: true,
                     },
                     rotate: 20,
                 })
@@ -189,7 +183,6 @@ export default function home() {
                     trigger: '.skill-card-body p',
                     start: 'top 90%',
                     end: 'top 20%',
-                    scrub: true,
                 }
             })
 
@@ -202,7 +195,6 @@ export default function home() {
                     trigger: '.about-body-1 p',
                     start: 'top 90%',
                     end: 'top 20%',
-                    scrub: true,
                 }
             })
             gsap.from('.about-img-container img', {
@@ -213,7 +205,6 @@ export default function home() {
                     trigger: '.about-img-container img',
                     start: 'top 90%',
                     end: 'top 20%',
-                    scrub: true,
                 }
             })
 
@@ -226,7 +217,6 @@ export default function home() {
                     trigger: '.contact-us',
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: true,
                 }
             })
             gsap.from('.contact-me', {
@@ -237,7 +227,6 @@ export default function home() {
                     trigger: '.contact-me',
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: true,
                 },
             })
             // -----------------------FOOTER VFX-------------------------------------
@@ -249,7 +238,6 @@ export default function home() {
                     trigger: '.footer-body-2',
                     start: 'top 90%',
                     end: 'top 70%',
-                    scrub: true,
                 },
                 rotate: 30,
             })
@@ -260,7 +248,6 @@ export default function home() {
                     trigger: '.footer-body-1',
                     start: 'top 90%',
                     end: 'top 70%',
-                    scrub: true,
                 },
                 rotate: -30,
             })

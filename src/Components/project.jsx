@@ -61,7 +61,6 @@ export default function project() {
                 trigger: '.scroll-tittle h3',
                 start: 'top 80%',
                 end: 'top 45%',
-                scrub: 1,
             }
         })
         gsap.from('.small-projects', {
@@ -71,7 +70,6 @@ export default function project() {
                 trigger: '.small-projects',
                 start: 'top 70%',
                 end: 'top 55%',
-                scrub: true,
             }
         })
         gsap.from('.contact-us1', {
@@ -82,7 +80,6 @@ export default function project() {
                 trigger: '.contact-us1',
                 start: 'top 100%',
                 end: 'top 80%',
-                scrub: true,
             }
         })
         gsap.from('.contact-us2', {
@@ -93,7 +90,6 @@ export default function project() {
                 trigger: '.contact-us2',
                 start: 'top 100%',
                 end: 'top 80%',
-                scrub: true,
             },
         })
 
